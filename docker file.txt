@@ -1,0 +1,15 @@
+FROM python:3.8-slim
+
+WORKDIR /app
+
+# نسخ كل الملفات إلى الحاوية
+COPY . .
+
+# تثبيت Buildozer
+RUN pip install buildozer
+
+# تثبيت المتطلبات الخاصة بك
+RUN pip install -r requirements.txt
+
+# بناء الـ APK باستخدام Buildozer
+CMD ["buildozer", "android", "debug"]
